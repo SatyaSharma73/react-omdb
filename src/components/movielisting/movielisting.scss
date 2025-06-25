@@ -1,0 +1,43 @@
+.movie-wrapper {
+  background-color: #121212;
+  padding: 40px 20px;
+  color: #ffffff;
+
+  h2 {
+    font-size: 24px;
+    color: #f5c518;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .movie-list,
+  .show-list {
+    margin-bottom: 50px;
+
+    .slick-slider {
+      .slick-slide {
+        padding: 10px;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+
+     
+
+      .slick-disabled {
+        opacity: 0.5;
+        pointer-events: none;
+      }
+    }
+  }
+
+  .movies-error,
+  .shows-error {
+    text-align: center;
+    color: #ff4c4c;
+    font-size: 18px;
+    margin-top: 20px;
+  }
+}

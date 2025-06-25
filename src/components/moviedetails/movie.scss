@@ -1,0 +1,183 @@
+.movie-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 40px;
+  background-color: #0f0f0f;
+  color: #e6e6e6;
+  gap: 40px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 20px;
+  }
+}
+
+.section-left {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .episode-list {
+    width: 100%;
+    margin-top: 20px;
+    background-color: #141414;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+
+    h3 {
+      font-size: 22px;
+      margin-bottom: 16px;
+      color: #f5c518;
+      border-bottom: 2px solid #f5c518;
+      padding-bottom: 6px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        padding: 10px;
+        margin-bottom: 8px;
+        background-color: #2c2c2c;
+        border-left: 4px solid #f5c518;
+        border-radius: 4px;
+        font-size: 16px;
+        color: #fff;
+
+        strong {
+          color: #f5c518;
+        }
+      }
+    }
+  }
+}
+
+.movie-title {
+  font-size: 40px;
+  font-weight: 700;
+  color: #f5c518; // IMDb yellow
+  text-align: left; // ensures left alignment
+}
+
+
+.movie-rating {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  font-size: 16px;
+
+  span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #1a1a1a;
+    padding: 6px 12px;
+    border-radius: 6px;
+    color: #ffffff;
+  }
+
+  i {
+    color: #f5c518;
+  }
+}
+
+.movie-plot {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #cccccc;
+  background-color: #1a1a1a;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.movie-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    background-color: #1a1a1a;
+    padding: 10px;
+    border-radius: 6px;
+
+    span:first-child {
+      font-weight: 600;
+      color: #f5c518;
+      margin-bottom: 4px;
+    }
+
+    span:last-child {
+      color: #e0e0e0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.section-right {
+  display: flex;
+  width: 20%;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #1c1c1c;
+  color: #fff;
+
+  img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+
+  .season-selector {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #f5c518;
+      width: 100%;
+    }
+
+    button {
+      flex: 1 1 calc(10% - 20px); // 5 buttons per row
+      min-width: 100px;
+      padding: 8px 14px;
+      background-color: #2c2c2c;
+      color: #f5c518;
+      border: 1px solid #f5c518;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+
+
+      &.active,
+      &:hover {
+        background-color: #f5c518;
+        color: #000;
+      }
+    }
+
+    @media (max-width: 768px) {
+      button {
+        flex: 1 1 calc(50% - 10px); // 2 buttons per row on smaller screens
+      }
+    }
+  }
+
+
+}
