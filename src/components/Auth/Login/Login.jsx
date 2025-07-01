@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import './Loginpage.scss'; // External CSS for styling
 import { Link, useNavigate  } from 'react-router-dom';
 import { useUserAuth } from '../../Context/UserAuthContext';
-
+import {auth} from "../../../common/firebase"
 
 const LoginPage = () => {
   const [email,setEmail]=useState("");
   const [password,setPassword]=useState("");
   const [error,setError]=useState("");
-  const {Login,googleSignin}=useUserAuth();
+  const {Login,googleSignin,resetPassword}=useUserAuth();
   const navigate=useNavigate();
   const handlelogin= async(e)=>{
     e.preventDefault();
@@ -32,7 +32,20 @@ const google=async (e)=>{
     
   }
 }
-  return (
+const Forgetpw = async (e) => {
+  e.preventDefault();
+  const emailPrompt = prompt("Enter your email address:");
+  if (emailPrompt) {
+    try {
+      await resetPassword(emailPrompt);
+      alert("Password reset email sent!");
+    } catch (error) {
+      alert("Error: " + error.message);
+    }
+  }
+};
+
+return (
     <div className="login-container">
       <div className="login-box">
         <h2 className="login-title">Login</h2>
@@ -47,6 +60,9 @@ const google=async (e)=>{
         <p className="login-footer">
           New to FilmoraX ? <Link to="/signup">Create an account</Link>
         </p>
+        <button className="login-footer" onClick={Forgetpw}>
+        Forgot Password 
+        </button>
       </div>
     </div>
   );
