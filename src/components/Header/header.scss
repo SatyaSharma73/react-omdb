@@ -87,7 +87,29 @@
     }
   }
 
+  .back-button {
+    background-color: #f5c518;
+    color: #333;
+    border: none;
+    padding: 10px 10px;
+    font-size: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 20px;
 
+    &:hover {
+      background-color: #dcdcdc;
+    }
+
+    &:active {
+      background-color: #c0c0c0;
+    }
+  }
+
+  .toggle-btn {
+    display: none;
+  }
 
   .user-image {
     img {

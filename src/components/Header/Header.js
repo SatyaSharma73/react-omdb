@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import user from "../../images/user.png";
 import "./header.scss";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,6 +13,9 @@ import { useUserAuth } from "../Context/UserAuthContext";
 function Header() {
   let { user, logout } = useUserAuth();
   const [term, setTerm] = useState("");
+
+  const location = useLocation();
+  console.log("Location object:", location.pathname);
 
   const Currentmode = useSelector(getMode);
 
@@ -33,6 +36,16 @@ function Header() {
     console.log("Mode switched to:", newMode === 1 ? "Series" : "Movies");
   };
 
+  const back = () => {
+    console.log("goback");
+
+    if (window.history.length > 1) {
+      window.history.back();
+    } else {
+      window.location.href = "/"; // fallback to home or another safe page
+    }
+  };
+
   const signout = async () => {
     try {
       await logout();
@@ -43,12 +56,20 @@ function Header() {
 
   return (
     <div className="header">
+      {location.pathname.includes("/movie/") ? (
+        <button class="back-button" onClick={back}>
+               ← Back{" "}
+        </button>
+      ) : (
+        ""
+      )}
+
       <div className="logo">
         {" "}
         <Link to="/">FilmoraX </Link>
       </div>
 
-      {user ? (
+      {user && !location.pathname.includes("/movie/") ? (
         <div className="search-bar">
                {" "}
           <form onSubmit={submitHandler}>
@@ -67,10 +88,34 @@ function Header() {
              {" "}
         </div>
       ) : (
-        ""
+        <div className="search-bar">
+               {" "}
+          <form onSubmit={submitHandler}>
+                   {" "}
+            <input
+              type="text"
+              value={term}
+              disabled
+              placeholder={`Go back to homepage to search your ${
+                Currentmode === 1 ? "Movie" : "Show"
+              }. . .`}
+              onChange={(e) => setTerm(e.target.value)}
+            />
+                    <button type="submit">Search</button>
+                 {" "}
+          </form>
+             {" "}
+        </div>
       )}
 
-      {user ? (
+      {user && location.pathname.includes("/movie/") ? (
+        <div className="toggle-mode">
+                       {" "}
+          {user?.email && (
+            <span className="user-email">Logged in as: {user.displayName}</span>
+          )}
+        </div>
+      ) : (
         <div className="toggle-mode">
                  {" "}
           <button onClick={toggleMode}>
@@ -82,8 +127,6 @@ function Header() {
             <span className="user-email">Logged in as: {user.displayName}</span>
           )}
         </div>
-      ) : (
-        ""
       )}
 
       <div className="user-image">

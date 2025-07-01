@@ -27,7 +27,14 @@ function App() {
                   </ProtectedRoute>
                 }
               />
-              <Route path="/movie/:imdbID" element={<MovieDetails />} />
+              <Route
+                path="/movie/:imdbID"
+                element={
+                  <ProtectedRoute>
+                    <MovieDetails />
+                  </ProtectedRoute>
+                }
+              />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/signup" element={<SignPage />} />
               <Route path="*" element={<PageNotFound />} />

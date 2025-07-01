@@ -31,7 +31,8 @@ function Moviedetails() {
       ) : (
         <>
           <div className="section-left">
-            <div className="movie-title">{data.Title}</div>
+            <div className="movie-title">{data.Title} </div>
+
             <div className="movie-rating">
               <span>
                 IMDB Rating <i className="fa fa-star"></i> : {data.imdbRating}
