@@ -57,9 +57,19 @@
     }
   }
 
+
+  .user-email {
+    font-size: 0.95rem;
+    color: #ffffff;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+
   .toggle-mode {
     button {
       padding: 8px 16px;
+
       background-color: transparent;
       border: 2px solid currentColor;
       border-radius: 20px;
@@ -81,12 +91,34 @@
 
   .user-image {
     img {
-      width: 40px;
+      width: 50px;
       height: 40px;
       border-radius: 50%;
       border: 2px solid #f5c518;
     }
-  }
 
+    button {
+      margin: 20px;
+      padding: 8px 16px;
+      background-color: #dc3545; // Bootstrap-style red
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-weight: 500;
+
+
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #c82333;
+      }
+
+      &:active {
+        background-color: #bd2130;
+      }
+
+    }
+  }
 
 }

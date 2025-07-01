@@ -9,7 +9,9 @@ import {
   getMode,
   setMode,
 } from "../../features/movies/movieSlice";
+import { useUserAuth } from "../Context/UserAuthContext";
 function Header() {
+  let { user, logout } = useUserAuth();
   const [term, setTerm] = useState("");
 
   const Currentmode = useSelector(getMode);
@@ -29,6 +31,14 @@ function Header() {
     const newMode = Currentmode === 1 ? 0 : 1;
     dispatch(setMode(newMode));
     console.log("Mode switched to:", newMode === 1 ? "Series" : "Movies");
+  };
+
+  const signout = async () => {
+    try {
+      await logout();
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (
@@ -63,10 +73,19 @@ function Header() {
                  {" "}
         </button>
              {" "}
+        {user?.email && (
+          <span className="user-email">Logged in as: {user.email}</span>
+        )}
       </div>
 
       <div className="user-image">
-        <img src={user} alt="user"></img>
+        {/* <img src={user} alt="user"></img> */}
+
+        {user && user.email ? (
+          <button onClick={signout}>          Log out         </button>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

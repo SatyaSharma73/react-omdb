@@ -1,0 +1,102 @@
+$background-color: #121212;
+$box-color: #1f1f1f;
+$input-bg: #2c2c2c;
+$imdb-yellow: #f5c518;
+$text-color: #fff;
+$hover-yellow: #e4b417;
+
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: $background-color;
+    color: $text-color;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    .login-box {
+        background-color: $box-color;
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba($text-color, 0.1);
+        width: 320px;
+        text-align: center;
+
+        .login-title {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: $imdb-yellow;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+
+            .login-input {
+                padding: 10px;
+                margin-bottom: 15px;
+                border: none;
+                border-radius: 4px;
+                background-color: $input-bg;
+                color: $text-color;
+            }
+
+            .login-button {
+                padding: 10px;
+                background-color: $imdb-yellow;
+                border: none;
+                border-radius: 4px;
+                color: #000;
+                font-weight: bold;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: $hover-yellow;
+                }
+            }
+        }
+
+        .divider {
+            margin: 20px 0;
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        .google-login-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px;
+            background-color: #fff;
+            border: none;
+            border-radius: 4px;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+
+            img {
+                width: 20px;
+                height: 20px;
+            }
+
+            &:hover {
+                background-color: #eaeaea;
+            }
+        }
+
+        .login-footer {
+            margin-top: 15px;
+            font-size: 14px;
+
+            a {
+                color: $imdb-yellow;
+                text-decoration: none;
+            }
+        }
+    }
+}

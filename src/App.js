@@ -1,30 +1,41 @@
 import "./App.scss";
 import React from "react";
-import { BrowserRouter, Route, Switch, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/Header/Header";
-import home from "./components/home/home";
-import moviedetails from "./components/moviedetails/moviedetails";
-import pagenotfound from "./components/pagenotfound/pagenotfound";
+import Home from "./components/home/home";
+import MovieDetails from "./components/moviedetails/moviedetails";
+import PageNotFound from "./components/pagenotfound/pagenotfound";
 import Footer from "./components/Footer/Footer";
+import LoginPage from "./components/Auth/Login/Login";
+import SignPage from "./components/Auth/Signup/Signup";
+import { UserAuthContextProvider } from "./components/Context/UserAuthContext";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
     <div className="App">
-      <div className="App">
+      <UserAuthContextProvider>
         <BrowserRouter>
-          <Header></Header>
+          <Header />
           <div className="container">
             <Routes>
-              {" "}
-              <Route path="/" exact Component={home}></Route>
-              <Route path="/movie/:imdbID" Component={moviedetails}></Route>
-              <Route path="*" Component={pagenotfound}></Route>
+              <Route
+                path="/"
+                element={
+                  <ProtectedRoute>
+                    <Home />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="/movie/:imdbID" element={<MovieDetails />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/signup" element={<SignPage />} />
+              <Route path="*" element={<PageNotFound />} />
             </Routes>
           </div>
-
-          <Footer></Footer>
+          <Footer />
         </BrowserRouter>
-      </div>
+      </UserAuthContextProvider>
     </div>
   );
 }
