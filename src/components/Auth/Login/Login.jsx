@@ -60,9 +60,9 @@ return (
         <p className="login-footer">
           New to FilmoraX ? <Link to="/signup">Create an account</Link>
         </p>
-        <button className="login-footer" onClick={Forgetpw}>
+        <p className="login-footer" onClick={Forgetpw}>
         Forgot Password 
-        </button>
+        </p>
       </div>
     </div>
   );
