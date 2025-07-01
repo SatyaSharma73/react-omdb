@@ -48,35 +48,43 @@ function Header() {
         <Link to="/">FilmoraX </Link>
       </div>
 
-      <div className="search-bar">
-             {" "}
-        <form onSubmit={submitHandler}>
-                 {" "}
-          <input
-            type="text"
-            value={term}
-            placeholder={`Search your favorite ${
-              Currentmode === 1 ? "Movie" : "Show"
-            }. . .`}
-            onChange={(e) => setTerm(e.target.value)}
-          />
-                  <button type="submit">Search</button>
+      {user ? (
+        <div className="search-bar">
                {" "}
-        </form>
-           {" "}
-      </div>
+          <form onSubmit={submitHandler}>
+                   {" "}
+            <input
+              type="text"
+              value={term}
+              placeholder={`Search your favorite ${
+                Currentmode === 1 ? "Movie" : "Show"
+              }. . .`}
+              onChange={(e) => setTerm(e.target.value)}
+            />
+                    <button type="submit">Search</button>
+                 {" "}
+          </form>
+             {" "}
+        </div>
+      ) : (
+        ""
+      )}
 
-      <div className="toggle-mode">
-               {" "}
-        <button onClick={toggleMode}>
-                    Switch to {Currentmode === 1 ? "Series" : "Movies"} Mode
+      {user ? (
+        <div className="toggle-mode">
                  {" "}
-        </button>
-             {" "}
-        {user?.email && (
-          <span className="user-email">Logged in as: {user.email}</span>
-        )}
-      </div>
+          <button onClick={toggleMode}>
+                      Switch to {Currentmode === 1 ? "Series" : "Movies"} Mode
+                   {" "}
+          </button>
+               {" "}
+          {user?.email && (
+            <span className="user-email">Logged in as: {user.displayName}</span>
+          )}
+        </div>
+      ) : (
+        ""
+      )}
 
       <div className="user-image">
         {/* <img src={user} alt="user"></img> */}

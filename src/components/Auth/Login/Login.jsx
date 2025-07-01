@@ -8,7 +8,7 @@ const LoginPage = () => {
   const [email,setEmail]=useState("");
   const [password,setPassword]=useState("");
   const [error,setError]=useState("");
-  const {Login}=useUserAuth();
+  const {Login,googleSignin}=useUserAuth();
   const navigate=useNavigate();
   const handlelogin= async(e)=>{
     e.preventDefault();
@@ -22,7 +22,16 @@ const LoginPage = () => {
       }
     }
   
-
+const google=async (e)=>{
+  e.preventDefault();
+  try {
+    await googleSignin();
+    navigate("/")
+  } catch (error) {
+    setError(error.message)
+    
+  }
+}
   return (
     <div className="login-container">
       <div className="login-box">
@@ -34,7 +43,7 @@ const LoginPage = () => {
           <button type="submit" className="login-button">Log In</button>
           <br />
         </form>
-          {/* <button className="login-button">Log In With Google</button> */}
+          <button className="google-login-btn" onClick={google}>Log In With Google</button>
         <p className="login-footer">
           New to FilmoraX ? <Link to="/signup">Create an account</Link>
         </p>
