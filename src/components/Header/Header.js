@@ -101,8 +101,7 @@ function Header() {
               }. . .`}
               onChange={(e) => setTerm(e.target.value)}
             />
-                    <button type="submit">Search</button>
-                 {" "}
+                      {" "}
           </form>
              {" "}
         </div>
