@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import user from "../../images/user.png";
 import "./header.scss";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,6 +11,7 @@ import {
 } from "../../features/movies/movieSlice";
 import { useUserAuth } from "../Context/UserAuthContext";
 function Header() {
+  const navigate = useNavigate();
   let { user, logout } = useUserAuth();
   const [term, setTerm] = useState("");
 
@@ -20,6 +21,7 @@ function Header() {
   const Currentmode = useSelector(getMode);
 
   const dispatch = useDispatch();
+
   const submitHandler = (e) => {
     e.preventDefault();
     if (term === "") {
@@ -36,13 +38,12 @@ function Header() {
     console.log("Mode switched to:", newMode === 1 ? "Series" : "Movies");
   };
 
-  const back = () => {
-    console.log("goback");
-
-    if (window.history.length > 1) {
-      window.history.back();
+  const back = (e) => {
+    e.preventDefault();
+    if (location.key !== "default") {
+      navigate(-1); // Go back
     } else {
-      window.location.href = "/"; // fallback to home or another safe page
+      navigate("/"); // Fallback to home
     }
   };
 
@@ -111,7 +112,7 @@ function Header() {
         <div className="toggle-mode">
                        {" "}
           {user?.email && (
-            <span className="user-email">Logged in as: {user.displayName}</span>
+            <span className="user-email">Logged in as: {user.email}</span>
           )}
         </div>
       ) : (
@@ -123,7 +124,7 @@ function Header() {
           </button>
                {" "}
           {user?.email && (
-            <span className="user-email">Logged in as: {user.displayName}</span>
+            <span className="user-email">Logged in as: {user.email}</span>
           )}
         </div>
       )}
