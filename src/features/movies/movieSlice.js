@@ -11,6 +11,7 @@ export const movieSlice = createSlice({
     selectedMovieOrShow: {},
     episodes: {},
     mode: 1,
+    search: "",
   },
   reducers: {
     setMode: (state, action) => {
@@ -18,7 +19,7 @@ export const movieSlice = createSlice({
     },
   },
   // extraReducers: {
-  //   [fetchAysnMovies.pending]: () => {
+  //   [fetchAysnMovies.pending]: () => ac{
   //     console.log("pending");
   //   },
   //   [fetchAysnMovies.fulfilled]: (state, { payload }) => {
