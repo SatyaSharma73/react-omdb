@@ -48,7 +48,7 @@ const Forgetpw = async (e) => {
 return (
     <div className="login-container">
       <div className="login-box">
-        <h2 className="login-title">Login your account</h2>
+        <h2 className="login-title">Login</h2>
         {error}
         <form className="login-form" onSubmit={handlelogin}>
           <input type="text" placeholder="Username or Email" className="login-input" onChange={(e)=>setEmail(e.target.value)}/>
