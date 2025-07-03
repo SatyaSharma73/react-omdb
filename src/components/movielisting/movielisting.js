@@ -49,16 +49,34 @@ function Movielisting() {
           <h2>
             🎬 Your Gateway to Cinematic Worlds – Stream, Discover, Repeat!
           </h2>
-          <div className="">
-            <Slider {...settings}>{renderMovies}</Slider>
-          </div>
+          {shows.Response === "False" ? (
+            <div className="no-results">
+              <p>
+                We couldn't find anything matching your search. Please try a
+                different keyword.
+              </p>
+            </div>
+          ) : (
+            <div className="">
+              <Slider {...settings}>{renderMovies}</Slider>
+            </div>
+          )}
         </div>
       ) : (
         <div className="show-list">
           <h2>One More Episode? Always!</h2>
-          <div className="">
-            <Slider {...settings}>{renderShows}</Slider>
-          </div>
+          {shows.Response === "False" ? (
+            <div className="no-results">
+              <p>
+                We couldn't find anything matching your search. Please try a
+                different keyword.
+              </p>
+            </div>
+          ) : (
+            <div className="">
+              <Slider {...settings}>{renderShows}</Slider>
+            </div>
+          )}
         </div>
       )}
     </div>

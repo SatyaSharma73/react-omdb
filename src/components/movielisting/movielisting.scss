@@ -24,7 +24,7 @@
         }
       }
 
-     
+
 
       .slick-disabled {
         opacity: 0.5;
@@ -33,11 +33,27 @@
     }
   }
 
-  .movies-error,
-  .shows-error {
+  .no-results {
     text-align: center;
-    color: #ff4c4c;
-    font-size: 18px;
-    margin-top: 20px;
+    padding: 50px 20px;
+    color: #efd515;
+
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin: 40px auto;
+    max-width: 600px;
+
+    p {
+      font-size: 16px;
+      color: #efd515;
+    }
   }
+}
+
+.movies-error,
+.shows-error {
+  text-align: center;
+  color: #ff4c4c;
+  font-size: 18px;
+  margin-top: 20px;
 }
