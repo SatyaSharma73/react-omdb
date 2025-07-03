@@ -11,7 +11,7 @@ function Home() {
   const dispatch = useDispatch();
   useEffect(() => {
     const movieText = "Superman";
-    const showText = "You";
+    const showText = "Your";
 
     dispatch(fetchAysnMovies(movieText));
     dispatch(fetchAysnShows(showText));
